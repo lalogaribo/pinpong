@@ -1,0 +1,40 @@
+<div class="container col-sm-offset-2">
+  <div class="card">
+    <div class="card-body">
+      <%= form_for(@game, html: {class: "form-horizontal center"}) do |f| %>
+        <div class="form-group">
+          <%= f.label :date_played, class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= f.date_select :date_played, {class: "date form-control"} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :opponent_id, class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= f.collection_select :opponent_id, User.opponents(current_user.id), :id, :to_s, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :user_score, class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= f.number_field :user_score, class: "form-control", placeholder: "User score" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :opponent_score, class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= f.number_field :opponent_score, class: "form-control", placeholder: "Opponent score" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-4">
+            <%= f.submit class: "btn btn-primary btn-block" %>
+            <br>
+            <%= link_to 'cancel', games_path, class: "btn btn-default btn-block" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

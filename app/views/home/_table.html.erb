@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>Rank</th>
+    <th>Name</th>
+    <th>Score</th>
+    <th>Games Played</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each_with_index do |user, index| %>
+    <tr>
+      <td><%= index+1%></td>
+      <td><%= user.to_s %></td>
+      <td><%= user.score %></td>
+      <td><%= user.games.count %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
